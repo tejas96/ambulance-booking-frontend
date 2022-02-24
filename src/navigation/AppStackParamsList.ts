@@ -10,6 +10,7 @@ export type AppStackParamList = {
   [Routes.ONBOARDING]: undefined;
   [Routes.AMBULANCE_BOOKING]: undefined;
   [Routes.HOSPITAL_REGISTRATION]: undefined;
+  [Routes.DRIVER_LANDING_SCREEN]: undefined;
 };
 
 export type NavigationProps = NativeStackNavigationProp<AppStackParamList>;
