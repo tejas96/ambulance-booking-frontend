@@ -1,5 +1,9 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {Button as PaperButton} from 'react-native-paper';
+import theme from '../config/theme';
+
+const {COLOR} = theme;
 
 type IProps = React.ComponentProps<typeof PaperButton> & {
   mode?: 'contained' | 'outlined' | 'text';
@@ -17,7 +21,7 @@ const Button: React.FC<IProps> = ({
 }) => {
   return (
     <PaperButton
-      style={style}
+      style={[styles.button, style]}
       disabled={disabled}
       mode={mode}
       uppercase={uppercase}
@@ -28,4 +32,10 @@ const Button: React.FC<IProps> = ({
   );
 };
 
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: COLOR.primary,
+    padding: 5,
+  },
+});
 export default Button;

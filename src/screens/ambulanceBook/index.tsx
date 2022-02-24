@@ -1,9 +1,7 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import MapView, {Marker, Region} from 'react-native-maps';
-import {getImage} from '../../assets';
-import ImageTag from '../..//assets/images';
-import {Button, SafeAreaView} from '../../components';
+import {Marker, Region} from 'react-native-maps';
+import {Button, MapView, SafeAreaView} from '../../components';
 import useAmbulanceContainer from './container';
 import styles from './styles';
 
@@ -13,9 +11,7 @@ const AmbulanceBookScreen: React.FC<IProps> = () => {
   const {currentPosition, handleBookAmbulance, dummyCords} =
     useAmbulanceContainer();
   const [region, setRegion] = useState<Region>();
-  const handleRegionChange = useCallback((newRegion: Region) => {
-    setRegion(newRegion);
-  }, []);
+
   useEffect(() => {
     setRegion({
       latitude: currentPosition.position?.coords.latitude || 0,
@@ -27,7 +23,15 @@ const AmbulanceBookScreen: React.FC<IProps> = () => {
   return (
     <SafeAreaView>
       <View style={[styles.mapView]}>
-        <MapView showsUserLocation region={region} style={styles.map}>
+        <MapView
+          toolbarEnabled={true}
+          showsIndoors={true}
+          zoomControlEnabled={true}
+          scrollEnabled={true}
+          showsUserLocation
+          lat={region?.latitude || 0}
+          long={region?.longitude || 0}
+          style={styles.map}>
           {dummyCords.map((item, index) => (
             <Marker
               key={index}

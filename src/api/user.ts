@@ -1,9 +1,9 @@
 import {User} from '../model';
 import {AxiosResponse} from 'axios';
 import axios from './axios';
-
-const BASE_URL = 'http://192.168.43.230:8085';
-
+import Config from 'react-native-config';
+const {BASE_URL} = Config;
+console.log(BASE_URL);
 export function getCurrentUser(): Promise<AxiosResponse<User>> {
   return axios.get<User>(`${BASE_URL}/api/v1/user/getUser`);
 }

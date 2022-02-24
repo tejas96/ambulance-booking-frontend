@@ -6,3 +6,4 @@ import useLoggedInUser from './useLoggedInUser';
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export {useSession, useLoggedInUser};
+export {default as useGeoLocation} from './useGeoLocation';

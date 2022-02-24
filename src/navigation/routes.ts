@@ -11,3 +11,5 @@ export const USER_DETAILS_INFO = 'UserDetailsInfo';
 export const USER_DETAILS_TYPE = 'UserDetailsType';
 export const ONBOARDING = 'Onboarding';
 export const AMBULANCE_BOOKING = 'AmbulanceBooking';
+export const HOSPITAL_REGISTRATION = 'HospitalRegistration';
+export const DRIVER_LANDING_SCREEN = 'DriverLandingScreen';

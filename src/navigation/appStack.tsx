@@ -1,6 +1,11 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Home, SplashScreen, AmbulanceBooking} from '../screens';
+import {
+  Home,
+  SplashScreen,
+  AmbulanceBooking,
+  HospitalRegistration,
+} from '../screens';
 import {AppStackParamList} from './AppStackParamsList';
 import RegisterNavigationStack from './registerNavigationStack';
 import {Routes} from '.';
@@ -22,6 +27,10 @@ const AppStack: React.FC = () => {
       <Stack.Screen
         name={Routes.AMBULANCE_BOOKING}
         component={AmbulanceBooking}
+      />
+      <Stack.Screen
+        name={Routes.HOSPITAL_REGISTRATION}
+        component={HospitalRegistration}
       />
     </Stack.Navigator>
   );

@@ -36,10 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
     width,
-    borderWidth: 1,
-    borderColor: 'red',
   },
 });
 
