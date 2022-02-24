@@ -12,7 +12,7 @@ const SplashScreen: React.FC = () => {
   const {user, loading} = useLoggedInUser();
   useEffect(() => {
     if (user) {
-      navigation.replace(Routes.AMBULANCE_BOOKING);
+      navigation.replace(Routes.HOSPITAL_REGISTRATION);
     } else if (!loading) {
       navigation.replace(Routes.REGISTER_STACK);
     }
