@@ -38,6 +38,33 @@ const styles = StyleSheet.create({
   map: {
     width,
   },
+  bottomShitBtn: {
+    width: 128,
+  },
+  bottomSheet: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  bottomShitFooter: {
+    display: 'flex',
+    marginVertical: 12,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchContainer: {
+    display: 'flex',
+    position: 'relative',
+  },
+  searchResultView: {
+    position: 'absolute',
+    marginTop: 50,
+    width: '100%',
+    backgroundColor: 'white',
+    zIndex: 1,
+    maxHeight: 300,
+    overflow: 'scroll',
+  },
 });
 
 export default styles;
