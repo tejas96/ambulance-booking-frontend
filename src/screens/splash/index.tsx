@@ -17,7 +17,7 @@ const SplashScreen: React.FC = () => {
       if (user.role === UserRole.PASSENGER) {
         navigation.replace(Routes.AMBULANCE_BOOKING);
       } else {
-        navigation.replace(Routes.DRIVER_LANDING_SCREEN);
+        navigation.replace(Routes.AMBULANCE_BOOKING);
       }
     } else if (!loading) {
       navigation.replace(Routes.REGISTER_STACK);
