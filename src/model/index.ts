@@ -1,14 +1,32 @@
+export interface Ride {
+  amount: number;
+  from: {
+    latitude: number;
+    longitude: number;
+  };
+  to: {
+    latitude: number;
+    longitude: number;
+  };
+  timestamp: number;
+}
+
 export type User = {
   displayName?: string | undefined | null;
   email?: string | undefined | null;
   metadata?: any | undefined | null;
-  phoneNumber?: string | undefined | null;
-  uid?: string | undefined | null;
+  phoneNumber: string | undefined | null;
   firstName: string;
   lastName: string;
-  role: UserRole;
-  gender?: string;
+  photoURL?: string | undefined | null;
+  emailVerified?: boolean;
+  useRole: UserRole;
+  gender: string;
+  rides?: Array<Ride>;
+  status?: boolean;
 };
+
+export default User;
 
 export enum UserRole {
   DRIVER = 'DRIVER',
@@ -31,3 +49,10 @@ export interface HospitalRegistration {
   hospitalName: string;
   description: string;
 }
+
+export type Response = {
+  status?: number;
+  message: string;
+  data: any;
+  error: any;
+};

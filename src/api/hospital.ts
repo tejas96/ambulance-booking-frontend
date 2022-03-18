@@ -1,7 +1,7 @@
 import axios from './axios';
 import Config from 'react-native-config';
 const {BASE_URL} = Config;
-import {HospitalRegistration} from '../model';
+import {HospitalRegistration, Response} from '../model';
 import {AxiosResponse} from 'axios';
 
 export function registerHospital(
@@ -12,7 +12,7 @@ export function registerHospital(
 
 export function getHospitalsListByCityName(
   cityName: string,
-): Promise<AxiosResponse<HospitalRegistration>> {
+): Promise<AxiosResponse<Response>> {
   return axios.get(`${BASE_URL}/api/v1/hospital/`, {
     params: {
       city: cityName,

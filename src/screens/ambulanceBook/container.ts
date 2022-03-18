@@ -1,40 +1,44 @@
-import {useCallback} from 'react';
+import {useCallback, useRef, useState} from 'react';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import {HospitalRegistration} from '../../model';
 import {useGeoLocation} from '../../hooks';
+import {dummyCord, HealthAssessment, HealthAssessmentModel} from './const';
 
-const dummyCords = [
-  {
-    latitude: 16.98675,
-    longitude: 74.620028,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.9848,
-    longitude: 74.621111,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.982738,
-    longitude: 74.62007,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.985416,
-    longitude: 74.619351,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-];
+interface BottomSheetFormState {
+  healthAssessment: HealthAssessmentModel[];
+  hospitalRecord: HospitalRegistration | null;
+}
 
 const useAmbulanceBook = () => {
-  const geoLocation = useGeoLocation();
-  const handleBookAmbulance = useCallback(() => {}, []);
+  const refRBSheet = useRef<RBSheet>(null);
+  const {currentPosition} = useGeoLocation();
+  const [dummyCords] = useState(dummyCord);
+  const [bottomSheetForm, setBottomSheetForm] = useState<BottomSheetFormState>({
+    healthAssessment: HealthAssessment,
+    hospitalRecord: null,
+  });
+
+  const handleBookAmbulance = useCallback(() => {
+    refRBSheet.current?.open();
+  }, []);
+
+  const handleConfirmBooking = useCallback(() => {
+    const payload = {
+      hospital: bottomSheetForm.hospitalRecord,
+      healthAssessment: bottomSheetForm.healthAssessment.filter(
+        item => item.status,
+      ),
+    };
+    console.log(payload);
+  }, [bottomSheetForm]);
   return {
-    currentPosition: geoLocation.currentPosition,
+    currentPosition: currentPosition,
     handleBookAmbulance,
     dummyCords,
+    refRBSheet,
+    bottomSheetForm,
+    setBottomSheetForm,
+    handleConfirmBooking,
   };
 };
 

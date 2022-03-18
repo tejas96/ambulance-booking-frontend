@@ -5,6 +5,7 @@ import {
   SplashScreen,
   AmbulanceBooking,
   HospitalRegistration,
+  DriverLandingScreen,
 } from '../screens';
 import {AppStackParamList} from './AppStackParamsList';
 import RegisterNavigationStack from './registerNavigationStack';
@@ -31,6 +32,10 @@ const AppStack: React.FC = () => {
       <Stack.Screen
         name={Routes.HOSPITAL_REGISTRATION}
         component={HospitalRegistration}
+      />
+      <Stack.Screen
+        name={Routes.DRIVER_LANDING_SCREEN}
+        component={DriverLandingScreen}
       />
     </Stack.Navigator>
   );
