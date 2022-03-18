@@ -1,4 +1,5 @@
 export const OTP = 'OTP';
+export const HOME_STACK = 'HomeStack';
 export const HOME = 'Home';
 export const LOGIN = 'Login';
 export const SIGNUP = 'Signup';
