@@ -14,10 +14,10 @@ const SplashScreen: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.role === UserRole.PASSENGER) {
-        navigation.replace(Routes.AMBULANCE_BOOKING);
+      if (user.useRole === UserRole.PASSENGER) {
+        navigation.replace(Routes.HOME_STACK);
       } else {
-        navigation.replace(Routes.AMBULANCE_BOOKING);
+        navigation.replace(Routes.HOME_STACK);
       }
     } else if (!loading) {
       navigation.replace(Routes.REGISTER_STACK);
