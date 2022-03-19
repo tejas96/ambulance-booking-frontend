@@ -1,11 +1,5 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import React, {createContext, useEffect, useState} from 'react';
-import {firebase} from '@react-native-firebase/database';
-
-const reference = firebase
-  .app()
-  .database('https://ambulance-booking-21fed-default-rtdb.firebaseio.com/')
-  .ref('/driver');
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -98,9 +92,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   };
 
   useEffect(() => {
-    reference.on('value', snapshot => {
-      console.log(snapshot.val());
-    });
     const unSubscribe = auth().onAuthStateChanged(async authUser => {
       setLoading(false);
       setUser(authUser);

@@ -8,3 +8,6 @@ export {default as Onboarding} from './onboarding';
 export {default as AmbulanceBooking} from './ambulanceBook';
 export {default as HospitalRegistration} from './hospitalRegistration';
 export {default as DriverLandingScreen} from './driverScreen';
+export {default as HistoryScreen} from './history';
+export {default as Setting} from './setting';
+export {default as About} from './about';

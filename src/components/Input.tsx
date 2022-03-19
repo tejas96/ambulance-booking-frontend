@@ -22,7 +22,7 @@ const Input: React.FC<IProps> = ({
   ...props
 }) => {
   return (
-    <View style={[containerStyle]}>
+    <View style={[containerStyle, {width: '100%'}]}>
       <TextInput
         style={style}
         activeOutlineColor={error ? COLOR.danger : COLOR.primary}

@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {getImage} from '../../../assets';
 import ImageTag from '../../../assets/images';
-import {Button, DropDown, Input, SafeAreaView} from '../../../components';
+import {Button, Input, SafeAreaView} from '../../../components';
 import useContainer from './container';
 import styles from './styles';
 
@@ -43,7 +43,7 @@ const UserDetails: React.FC<Props> = () => {
               handleOnChange('lastName', text);
             }}
           />
-          <DropDown
+          {/* <DropDown
             style={styles.inputs}
             label="Gender"
             placeholder="Select gender"
@@ -53,7 +53,7 @@ const UserDetails: React.FC<Props> = () => {
               {label: 'Male', value: 'male'},
               {label: 'Female', value: 'female'},
             ]}
-          />
+          /> */}
         </View>
       </ScrollView>
       <Button

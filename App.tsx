@@ -1,15 +1,19 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import AmbulanceApp from './src/navigation';
-import {AuthProvider} from './src/providers';
 import {Provider as PaperProvider} from 'react-native-paper';
-import {PaperTheme} from './src/config';
 import {RecoilRoot} from 'recoil';
+import {PaperTheme} from './src/config';
+import AmbulanceApp from './src/navigation';
+import {AuthProvider, UtilityProvider} from './src/providers';
+
 const App = () => {
   return (
     <PaperProvider theme={PaperTheme}>
       <RecoilRoot>
         <AuthProvider>
-          <AmbulanceApp />
+          <UtilityProvider>
+            <AmbulanceApp />
+          </UtilityProvider>
         </AuthProvider>
       </RecoilRoot>
     </PaperProvider>

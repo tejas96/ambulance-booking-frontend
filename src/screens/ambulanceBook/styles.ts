@@ -4,7 +4,7 @@ const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   mapView: {
-    flex: 0.9,
+    flex: 0.8,
     width: '100%',
   },
   bookingView: {

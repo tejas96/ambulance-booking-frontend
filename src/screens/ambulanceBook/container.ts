@@ -1,7 +1,7 @@
 import {useCallback, useRef, useState} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {HospitalRegistration} from '../../model';
 import {useGeoLocation} from '../../hooks';
+import {HospitalRegistration} from '../../model';
 import {dummyCord, HealthAssessment, HealthAssessmentModel} from './const';
 
 interface BottomSheetFormState {
@@ -13,6 +13,7 @@ const useAmbulanceBook = () => {
   const refRBSheet = useRef<RBSheet>(null);
   const {currentPosition} = useGeoLocation();
   const [dummyCords] = useState(dummyCord);
+
   const [bottomSheetForm, setBottomSheetForm] = useState<BottomSheetFormState>({
     healthAssessment: HealthAssessment,
     hospitalRecord: null,

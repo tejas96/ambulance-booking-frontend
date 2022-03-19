@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import theme from '../config/theme';
 import {Divider, Modal, Portal} from 'react-native-paper';
-import TextInputBox, {TextInputBoxProps} from './Input';
+import TextInputBox from './Input';
 const {COLOR, FONT, SIZE} = theme;
 
 export type DropDownOptionType = {
@@ -18,7 +18,7 @@ export type DropDownOptionType = {
   value: string;
 };
 
-interface IProps extends TextInputBoxProps {
+interface IProps {
   options: DropDownOptionType[];
   selectedValue?: string;
   placeholder?: string;
