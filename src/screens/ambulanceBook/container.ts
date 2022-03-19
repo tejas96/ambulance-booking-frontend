@@ -1,82 +1,45 @@
-import {useCallback, useEffect, useState} from 'react';
-import {PermissionsAndroid, Platform, ToastAndroid} from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+import {useCallback, useRef, useState} from 'react';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import {useGeoLocation} from '../../hooks';
+import {HospitalRegistration} from '../../model';
+import {dummyCord, HealthAssessment, HealthAssessmentModel} from './const';
 
-const dummyCords = [
-  {
-    latitude: 16.98675,
-    longitude: 74.620028,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.9848,
-    longitude: 74.621111,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.982738,
-    longitude: 74.62007,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.985416,
-    longitude: 74.619351,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-];
-
-interface PositionState {
-  loading: boolean;
-  position: Geolocation.GeoPosition | null;
-  error: Geolocation.GeoError | null;
+interface BottomSheetFormState {
+  healthAssessment: HealthAssessmentModel[];
+  hospitalRecord: HospitalRegistration | null;
 }
+
 const useAmbulanceBook = () => {
-  const [currentPosition, setCurrentPosition] = useState<PositionState>({
-    loading: true,
-    position: null,
-    error: null,
+  const refRBSheet = useRef<RBSheet>(null);
+  const {currentPosition} = useGeoLocation();
+  const [dummyCords] = useState(dummyCord);
+
+  const [bottomSheetForm, setBottomSheetForm] = useState<BottomSheetFormState>({
+    healthAssessment: HealthAssessment,
+    hospitalRecord: null,
   });
-  useEffect(() => {
-    getCurrentGeoLocation().then;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  const handleBookAmbulance = useCallback(() => {
+    refRBSheet.current?.open();
   }, []);
 
-  const getCurrentGeoLocation = useCallback(async () => {
-    if (Platform.OS === 'android') {
-      const permission = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      );
-      if (permission === PermissionsAndroid.RESULTS.GRANTED) {
-        Geolocation.getCurrentPosition(
-          (position: Geolocation.GeoPosition) => {
-            setCurrentPosition({
-              loading: false,
-              position,
-              error: null,
-            });
-          },
-          error => {
-            setCurrentPosition({
-              loading: false,
-              position: null,
-              error: error,
-            });
-            ToastAndroid.show(error.message, ToastAndroid.SHORT);
-          },
-          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-        );
-      }
-    }
-  }, []);
-  const handleBookAmbulance = useCallback(() => {}, []);
+  const handleConfirmBooking = useCallback(() => {
+    const payload = {
+      hospital: bottomSheetForm.hospitalRecord,
+      healthAssessment: bottomSheetForm.healthAssessment.filter(
+        item => item.status,
+      ),
+    };
+    console.log(payload);
+  }, [bottomSheetForm]);
   return {
-    currentPosition,
+    currentPosition: currentPosition,
     handleBookAmbulance,
     dummyCords,
+    refRBSheet,
+    bottomSheetForm,
+    setBottomSheetForm,
+    handleConfirmBooking,
   };
 };
 

@@ -13,8 +13,9 @@ const useContainer = () => {
   const [userState, setUserState] = useState<User>({
     firstName: '',
     lastName: '',
-    role: router.params.role,
-    gender: '',
+    useRole: router.params.role,
+    gender: 'male',
+    phoneNumber: '',
   });
 
   const handleOnChange = (key: string, value: any) => {
@@ -28,11 +29,11 @@ const useContainer = () => {
     const user = <User>{...userState, phoneNumber: authUser?.phoneNumber};
     console.log('user', user);
     await UserAPI.saveUser(user)
-      .then(() => {})
+      .then(() => {
+        setLoader(false);
+      })
       .catch(error => {
         console.log(error);
-      })
-      .finally(() => {
         setLoader(false);
       });
   };

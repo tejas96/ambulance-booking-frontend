@@ -4,7 +4,7 @@ const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   mapView: {
-    flex: 0.9,
+    flex: 0.8,
     width: '100%',
   },
   bookingView: {
@@ -36,10 +36,34 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
     width,
-    borderWidth: 1,
-    borderColor: 'red',
+  },
+  bottomShitBtn: {
+    width: 128,
+  },
+  bottomSheet: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  bottomShitFooter: {
+    display: 'flex',
+    marginVertical: 12,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchContainer: {
+    display: 'flex',
+    position: 'relative',
+  },
+  searchResultView: {
+    position: 'absolute',
+    marginTop: 50,
+    width: '100%',
+    backgroundColor: 'white',
+    zIndex: 1,
+    maxHeight: 300,
+    overflow: 'scroll',
   },
 });
 

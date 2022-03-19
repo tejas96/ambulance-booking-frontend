@@ -27,8 +27,7 @@ const useLoggedInUser = () => {
           error: error.message,
           loading: false,
         });
-      })
-      .finally(() => {});
+      });
   };
   useEffect(loadUser, []);
 
