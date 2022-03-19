@@ -1,3 +1,3 @@
-const useDriverLanding = () => {};
+const useDriver = () => {};
 
-export default useDriverLanding;
+export default useDriver;
