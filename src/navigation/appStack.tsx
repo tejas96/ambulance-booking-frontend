@@ -1,16 +1,11 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {Routes} from '.';
-import {
-  AmbulanceBooking,
-  DriverLandingScreen,
-  HospitalRegistration,
-  SplashScreen,
-} from '../screens';
+import {HospitalRegistration, SplashScreen, About} from '../screens';
 import {AppStackParamList} from './AppStackParamsList';
+import DriverNavigation from './driverNavigation';
 import RegisterNavigationStack from './registerNavigationStack';
-import TabNavigation from './tabNavigation';
-
+import PassengerNavigation from './passengerNavigation';
 const Stack = createNativeStackNavigator<AppStackParamList>();
 const AppStack: React.FC = () => {
   return (
@@ -20,22 +15,25 @@ const AppStack: React.FC = () => {
       }}
       initialRouteName={Routes.SPLASH_SCREEN}>
       <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
-      <Stack.Screen name={Routes.HOME_STACK} component={TabNavigation} />
+      <Stack.Screen
+        name={Routes.PASSENGER_STACK}
+        component={PassengerNavigation}
+      />
+      <Stack.Screen name={Routes.DRIVER_STACK} component={DriverNavigation} />
       <Stack.Screen
         name={Routes.REGISTER_STACK}
         component={RegisterNavigationStack}
-      />
-      <Stack.Screen
-        name={Routes.AMBULANCE_BOOKING}
-        component={AmbulanceBooking}
       />
       <Stack.Screen
         name={Routes.HOSPITAL_REGISTRATION}
         component={HospitalRegistration}
       />
       <Stack.Screen
-        name={Routes.DRIVER_LANDING_SCREEN}
-        component={DriverLandingScreen}
+        options={{
+          headerShown: true,
+        }}
+        name={Routes.ABOUT}
+        component={About}
       />
     </Stack.Navigator>
   );

@@ -32,6 +32,7 @@ const useAuthContainer = () => {
         navigation.navigate(Routes.OTP, {
           phoneNumber: componentState.userPhoneNumber,
         });
+        setLoading(false);
       })
       .catch(err => {
         if (err.code === 'auth/invalid-phone-number') {
@@ -43,8 +44,6 @@ const useAuthContainer = () => {
             userPhoneNumber: err.message,
           });
         }
-      })
-      .finally(() => {
         setLoading(false);
       });
   };

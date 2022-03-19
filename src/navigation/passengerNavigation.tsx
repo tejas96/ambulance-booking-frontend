@@ -4,6 +4,7 @@ import {AppStackParamList} from './AppStackParamsList';
 import {Setting, AmbulanceBooking} from '../screens';
 import Feather from 'react-native-vector-icons/Feather';
 import {Text} from 'react-native-paper';
+import {Routes} from '.';
 
 const Tab = createBottomTabNavigator<AppStackParamList>();
 
@@ -22,9 +23,9 @@ const TabScreen: React.FC = () => {
           height: 50,
         },
       }}
-      initialRouteName="Home">
+      initialRouteName={Routes.AMBULANCE_BOOKING}>
       <Tab.Screen
-        name="Home"
+        name={Routes.AMBULANCE_BOOKING}
         component={AmbulanceBooking}
         options={{
           tabBarIcon: ({color, size}) => (
