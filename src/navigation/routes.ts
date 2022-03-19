@@ -1,5 +1,6 @@
 export const OTP = 'OTP';
-export const HOME_STACK = 'HomeStack';
+export const PASSENGER_STACK = 'PassengerStack';
+export const DRIVER_STACK = 'DriverStack';
 export const HOME = 'Home';
 export const LOGIN = 'Login';
 export const SIGNUP = 'Signup';
@@ -14,3 +15,4 @@ export const ONBOARDING = 'Onboarding';
 export const AMBULANCE_BOOKING = 'AmbulanceBooking';
 export const HOSPITAL_REGISTRATION = 'HospitalRegistration';
 export const DRIVER_LANDING_SCREEN = 'DriverLandingScreen';
+export const ABOUT = 'About';
