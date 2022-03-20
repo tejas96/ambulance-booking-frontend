@@ -4,14 +4,23 @@ const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   mapView: {
-    flex: 0.7,
+    flex: 1,
     width: '100%',
   },
   map: {
     width,
   },
   passengerRequestContainer: {
-    flex: 0.2,
+    flex: 1,
+    width: '80%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#fff',
+  },
+  rejectBtn: {
+    backgroundColor: 'red',
   },
 });
 
