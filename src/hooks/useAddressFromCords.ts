@@ -25,7 +25,10 @@ interface GoogleApiResponseModel {
   }>;
 }
 
-const useAddressFromCords = () => {
+const useAddressFromCords = (): [
+  (lat: number, lng: number) => Promise<void>,
+  GeolocationState,
+] => {
   const [addressState, setAddressState] = useState<GeolocationState>({
     loading: true,
     data: null,

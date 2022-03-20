@@ -31,8 +31,9 @@ const Button: React.FC<IProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: PaperTheme.colors.primary,
+    backgroundColor: PaperTheme.colors.accent,
     padding: 5,
+    borderRadius: 5,
   },
 });
 export default Button;
