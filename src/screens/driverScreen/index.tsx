@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {Marker} from 'react-native-maps';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -10,9 +10,7 @@ interface IProps {}
 
 const AmbulanceBookScreen: React.FC<IProps> = () => {
   const {mapRef, state, passengerSheet} = useDriver();
-  useEffect(() => {
-    if (passengerSheet.current) passengerSheet.current.open();
-  }, [passengerSheet]);
+
   return (
     <SafeAreaView>
       {state.loading ? (
