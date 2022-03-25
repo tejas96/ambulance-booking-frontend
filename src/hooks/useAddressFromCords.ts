@@ -26,7 +26,7 @@ interface GoogleApiResponseModel {
 }
 
 const useAddressFromCords = (): [
-  (lat: number, lng: number) => Promise<void>,
+  (lat: number, lng: number) => Promise<Location | null>,
   GeolocationState,
 ] => {
   const [addressState, setAddressState] = useState<GeolocationState>({
@@ -46,9 +46,9 @@ const useAddressFromCords = (): [
       loading: false,
       error: convertedLocation ? null : 'Error',
     });
-
+    return convertedLocation;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) as (lat: number, lng: number) => Promise<void>;
+  }, []) as (lat: number, lng: number) => Promise<Location | null>;
 
   const __convertGoogleApiResponseToLocation = useCallback(
     (rawLocationData: GoogleApiResponseModel) => {
