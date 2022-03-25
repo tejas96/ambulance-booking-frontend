@@ -56,3 +56,14 @@ export type Response = {
   data: any;
   error: any;
 };
+
+export interface SocketUser {
+  id?: string;
+  name: string;
+  city: string;
+  userId: string;
+  userRole: UserRole;
+  lat: number;
+  room: string;
+  long: number;
+}
