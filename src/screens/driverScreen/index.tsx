@@ -2,14 +2,21 @@ import React from 'react';
 import {View} from 'react-native';
 import {Marker} from 'react-native-maps';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {Button, Loader, MapView, SafeAreaView} from '../../components';
+import {
+  Button,
+  Loader,
+  MapView,
+  SafeAreaView,
+  Typography,
+} from '../../components';
 import useDriver from './container';
 import styles from './styles';
 
 interface IProps {}
 
 const AmbulanceBookScreen: React.FC<IProps> = () => {
-  const {mapRef, state, passengerSheet} = useDriver();
+  const {mapRef, state, passengerSheet, handleRequest, bookingDetails} =
+    useDriver();
 
   return (
     <SafeAreaView>
@@ -56,15 +63,35 @@ const AmbulanceBookScreen: React.FC<IProps> = () => {
                 backgroundColor: '#000',
               },
               container: {
-                height: 100,
+                height: 300,
                 justifyContent: 'flex-start',
                 alignItems: 'center',
                 borderRadius: 20,
               },
             }}>
             <View style={styles.passengerRequestContainer}>
-              <Button>Accept</Button>
-              <Button style={styles.rejectBtn}>Reject</Button>
+              <View style={styles.bookingDetailsContainer}>
+                <View style={styles.bookingDetails}>
+                  <Typography type="title">Pickup Location : </Typography>
+                  <Typography type="paragraph">
+                    {bookingDetails.pickUpLocation}
+                  </Typography>
+                </View>
+                <View style={styles.bookingDetails}>
+                  <Typography type="title">Drop Location : </Typography>
+                  <Typography type="paragraph">
+                    {bookingDetails.dropLocation}
+                  </Typography>
+                </View>
+              </View>
+              <View style={styles.buttonContainer}>
+                <Button onPress={() => handleRequest('Accept')}>Accept</Button>
+                <Button
+                  onPress={() => handleRequest('Reject')}
+                  style={styles.rejectBtn}>
+                  Reject
+                </Button>
+              </View>
             </View>
           </RBSheet>
         </>

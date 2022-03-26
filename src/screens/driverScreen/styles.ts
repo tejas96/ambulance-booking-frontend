@@ -12,15 +12,33 @@ const styles = StyleSheet.create({
   },
   passengerRequestContainer: {
     flex: 1,
-    width: '80%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
     backgroundColor: '#fff',
   },
   rejectBtn: {
     backgroundColor: 'red',
+  },
+  bookingDetailsContainer: {
+    width: '100%',
+  },
+  bookingDetails: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    width: '80%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
   },
 });
 
