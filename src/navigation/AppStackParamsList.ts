@@ -15,6 +15,7 @@ export type AppStackParamList = {
   [Routes.PASSENGER_STACK]: undefined;
   [Routes.DRIVER_STACK]: undefined;
   [Routes.ABOUT]: undefined;
+  [Routes.TRACKING]: undefined;
 };
 
 export type NavigationProps = NativeStackNavigationProp<AppStackParamList>;

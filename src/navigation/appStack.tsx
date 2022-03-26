@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {Routes} from '.';
-import {HospitalRegistration, SplashScreen, About} from '../screens';
+import {HospitalRegistration, SplashScreen, About, Tracking} from '../screens';
 import {AppStackParamList} from './AppStackParamsList';
 import DriverNavigation from './driverNavigation';
 import RegisterNavigationStack from './registerNavigationStack';
@@ -35,6 +35,7 @@ const AppStack: React.FC = () => {
         name={Routes.ABOUT}
         component={About}
       />
+      <Stack.Screen name={Routes.TRACKING} component={Tracking} />
     </Stack.Navigator>
   );
 };

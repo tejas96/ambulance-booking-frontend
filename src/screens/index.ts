@@ -11,3 +11,4 @@ export {default as DriverLandingScreen} from './driverScreen';
 export {default as HistoryScreen} from './history';
 export {default as Setting} from './setting';
 export {default as About} from './about';
+export {default as Tracking} from './tracking';
