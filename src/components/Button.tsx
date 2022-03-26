@@ -5,7 +5,6 @@ import {PaperTheme} from '../config';
 type IProps = React.ComponentProps<typeof PaperButton> & {
   mode?: 'contained' | 'outlined' | 'text';
   disabled?: boolean;
-  style?: any;
 };
 
 const Button: React.FC<IProps> = ({
