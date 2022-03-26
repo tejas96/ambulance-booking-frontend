@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {Marker, Region} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import {SocketUser} from '../../model';
 import {Button, MapView, SafeAreaView} from '../../components';
 import BottomSheetComponent from './BottomSheetComponent';
 import useAmbulanceContainer from './container';
@@ -15,7 +16,7 @@ const destination = {latitude: 16.982738, longitude: 74.62007};
 const GOOGLE_MAPS_APIKEY = 'AIzaSyAa9t8bwrEpkio5z0wcfuzbG_OhjiXOdbs';
 
 const AmbulanceBookScreen: React.FC<IProps> = () => {
-  const {currentPosition, refRBSheet, dummyCords, handleBookAmbulance} =
+  const {currentPosition, refRBSheet, joinedDrivers, handleBookAmbulance} =
     useAmbulanceContainer();
   const [region, setRegion] = useState<Region>();
 
@@ -27,6 +28,7 @@ const AmbulanceBookScreen: React.FC<IProps> = () => {
       longitudeDelta: 0.007,
     });
   }, [currentPosition]);
+  console.log(joinedDrivers);
   return (
     <SafeAreaView>
       <View style={[styles.mapView]}>
@@ -39,23 +41,26 @@ const AmbulanceBookScreen: React.FC<IProps> = () => {
           lat={region?.latitude || 0}
           long={region?.longitude || 0}
           style={styles.map}>
-          <MapViewDirections
+          {/* <MapViewDirections
             origin={origin}
             destination={destination}
             apikey={GOOGLE_MAPS_APIKEY}
             strokeColor="hotpink"
             strokeWidth={3}
-          />
-          {dummyCords.map((item, index) => (
+          /> */}
+          {joinedDrivers?.map((item: SocketUser, index) => (
             <Marker
+              icon={require('../../assets/images/ambulance.png')}
               key={index}
-              coordinate={{latitude: item.latitude, longitude: item.longitude}}
+              coordinate={{latitude: item.lat, longitude: item.long}}
             />
           ))}
         </MapView>
       </View>
       <View style={[styles.bookingView]}>
-        <Button onPress={handleBookAmbulance}>Book Ambulance</Button>
+        <Button style={{marginBottom: 50}} onPress={handleBookAmbulance}>
+          Book Ambulance
+        </Button>
       </View>
       <RBSheet
         ref={refRBSheet}

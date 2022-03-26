@@ -1,11 +1,4 @@
-import {HospitalRegistration} from 'src/model';
-
-export interface HealthAssessmentModel {
-  id: number;
-  label: string;
-  description?: string;
-  status: boolean;
-}
+import {HospitalRegistration, HealthAssessmentModel} from 'src/model';
 
 export const HealthAssessment: HealthAssessmentModel[] = [
   {
@@ -62,33 +55,6 @@ export const HealthAssessment: HealthAssessmentModel[] = [
     id: 11,
     label: 'Blood O-',
     status: false,
-  },
-];
-
-export const dummyCord = [
-  {
-    latitude: 16.98675,
-    longitude: 74.620028,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.9848,
-    longitude: 74.621111,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.982738,
-    longitude: 74.62007,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
-  },
-  {
-    latitude: 16.985416,
-    longitude: 74.619351,
-    latitudeDelta: 0.007,
-    longitudeDelta: 0.007,
   },
 ];
 
