@@ -5,7 +5,6 @@ import {PaperTheme} from '../config';
 type IProps = React.ComponentProps<typeof PaperButton> & {
   mode?: 'contained' | 'outlined' | 'text';
   disabled?: boolean;
-  style?: any;
 };
 
 const Button: React.FC<IProps> = ({
@@ -31,8 +30,9 @@ const Button: React.FC<IProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: PaperTheme.colors.primary,
+    backgroundColor: PaperTheme.colors.accent,
     padding: 5,
+    borderRadius: 5,
   },
 });
 export default Button;

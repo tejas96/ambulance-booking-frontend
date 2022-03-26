@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   bookingView: {
-    flex: 0.1,
+    flex: 0.2,
     justifyContent: 'center',
     alignItems: 'center',
     width: '99%',
