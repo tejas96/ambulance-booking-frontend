@@ -2,8 +2,9 @@ import React, {createContext, useEffect} from 'react';
 import Config from 'react-native-config';
 import {useRecoilState} from 'recoil';
 import io, {Socket} from 'socket.io-client';
-import {LocationAtoms} from '../redux/atoms';
+import {Driver, LocationAtoms} from '../redux/atoms';
 import {useSession} from '../hooks';
+import {BookingModal} from '../model';
 
 const {SOCKET_URL} = Config;
 interface SocketProviderProps {
@@ -21,6 +22,9 @@ const SocketProvider: React.FC<SocketProviderProps> = ({children}) => {
   const [socket, setSocket] = React.useState<Socket | null>(null);
   const {user} = useSession();
   const [_, setJoinedUsers] = useRecoilState(LocationAtoms.joinedUsers);
+  const [__, setAmbulanceBookRequest] = useRecoilState(
+    Driver.ambulanceBookRequest,
+  );
   useEffect(() => {
     if (user) {
       if (!socket?.connected) {
@@ -29,6 +33,9 @@ const SocketProvider: React.FC<SocketProviderProps> = ({children}) => {
           upgrade: false,
         });
         setSocket(socketObject);
+        socketObject.on(user.uid, (data: BookingModal) => {
+          setAmbulanceBookRequest(data);
+        });
       }
     }
 
