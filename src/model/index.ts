@@ -1,3 +1,5 @@
+import Geolocation from 'react-native-geolocation-service';
+
 export interface Ride {
   amount: number;
   from: {
@@ -55,4 +57,35 @@ export type Response = {
   message: string;
   data: any;
   error: any;
+};
+
+export interface SocketUser {
+  id?: string;
+  name: string;
+  city: string;
+  userId: string;
+  userRole: UserRole;
+  lat: number;
+  room: string;
+  long: number;
+  phoneNumber: string;
+}
+
+export interface HealthAssessmentModel {
+  id: number;
+  label: string;
+  description?: string;
+  status: boolean;
+}
+
+export type BookingModal = {
+  hospital: HospitalRegistration | null;
+  healthAssessment: Array<HealthAssessmentModel> | null;
+  bookingLocation: Geolocation.GeoCoordinates | null;
+  userId: string;
+};
+
+export type userIdListenerPayload = {
+  type: 'booking' | 'tracking';
+  payload: any;
 };

@@ -47,7 +47,27 @@ const useGeoLocation = () => {
     }
   }, []);
 
-  return {currentPosition, getCurrentGeoLocation};
+  const watchPosition = useCallback(() => {
+    Geolocation.watchPosition(
+      (position: Geolocation.GeoPosition) => {
+        setCurrentPosition({
+          loading: false,
+          position,
+          error: null,
+        });
+      },
+      error => {
+        setCurrentPosition({
+          loading: false,
+          position: null,
+          error: error,
+        });
+        ToastAndroid.show(error.message, ToastAndroid.SHORT);
+      },
+      {enableHighAccuracy: true},
+    );
+  }, []);
+  return {currentPosition, getCurrentGeoLocation, watchPosition};
 };
 
 export default useGeoLocation;

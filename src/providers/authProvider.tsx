@@ -1,5 +1,6 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import React, {createContext, useEffect, useState} from 'react';
+import {Storage} from '../utils';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -49,6 +50,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
    * this method will logout the current login user
    */
   const logout = async (): Promise<void> => {
+    await Storage.removeStorage('onboarding');
     auth()
       .signOut()
       .catch(error => {
