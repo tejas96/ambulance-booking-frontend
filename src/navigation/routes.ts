@@ -16,3 +16,4 @@ export const AMBULANCE_BOOKING = 'AmbulanceBooking';
 export const HOSPITAL_REGISTRATION = 'HospitalRegistration';
 export const DRIVER_LANDING_SCREEN = 'DriverLandingScreen';
 export const ABOUT = 'About';
+export const TRACKING = 'Tracking';

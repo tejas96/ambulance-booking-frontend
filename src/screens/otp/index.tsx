@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
-import {Button, Input} from '../../components';
+import {Pressable, SafeAreaView, View} from 'react-native';
+import {Button, Input, Typography} from '../../components';
 import {Text} from 'react-native-paper';
 import {useSession} from '../../hooks';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
 const OTP: React.FC = () => {
@@ -61,13 +62,14 @@ const OTP: React.FC = () => {
       <Button mode={'contained'} onPress={handleVerifyOtp}>
         Submit
       </Button>
-      <Text>Not receive OTP ?</Text>
-      <Button
+      <Pressable
         disabled={timer === 0 ? false : true}
-        icon={timer === 0 ? '' : 'clock'}
         onPress={handleResendOtp}>
-        {timer === 0 ? 'Resend' : timer}
-      </Button>
+        <Typography type="caption">
+          Not receive OTP ? {timer === 0 ? '' : <FeatherIcon name="clock" />}
+          {timer === 0 ? 'Resend' : timer}
+        </Typography>
+      </Pressable>
     </SafeAreaView>
   );
 };

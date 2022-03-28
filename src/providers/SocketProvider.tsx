@@ -4,7 +4,7 @@ import {useRecoilState} from 'recoil';
 import io, {Socket} from 'socket.io-client';
 import {Driver, LocationAtoms} from '../redux/atoms';
 import {useSession} from '../hooks';
-import {BookingModal} from '../model';
+import {BookingModal, userIdListenerPayload} from '../model';
 
 const {SOCKET_URL} = Config;
 interface SocketProviderProps {
@@ -33,8 +33,16 @@ const SocketProvider: React.FC<SocketProviderProps> = ({children}) => {
           upgrade: false,
         });
         setSocket(socketObject);
-        socketObject.on(user.uid, (data: BookingModal) => {
-          setAmbulanceBookRequest(data);
+        socketObject.on(user.uid, (payload: userIdListenerPayload) => {
+          switch (payload.type) {
+            case 'booking':
+              setAmbulanceBookRequest(payload.payload as BookingModal);
+              break;
+            case 'tracking':
+              break;
+            default:
+              break;
+          }
         });
       }
     }

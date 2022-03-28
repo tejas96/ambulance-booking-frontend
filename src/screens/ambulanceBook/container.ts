@@ -57,9 +57,10 @@ const useAmbulanceBook = () => {
         item => item.status,
       ),
       bookingLocation: currentPosition.position?.coords || null,
+      userId: user?.uid || '',
     };
     socket?.emit('bookAmbulance', payload);
-  }, [bottomSheetForm, currentPosition, socket]);
+  }, [bottomSheetForm, currentPosition, socket, user]);
   return {
     currentPosition: currentPosition,
     handleBookAmbulance,

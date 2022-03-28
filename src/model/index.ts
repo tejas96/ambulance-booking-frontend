@@ -82,4 +82,10 @@ export type BookingModal = {
   hospital: HospitalRegistration | null;
   healthAssessment: Array<HealthAssessmentModel> | null;
   bookingLocation: Geolocation.GeoCoordinates | null;
+  userId: string;
+};
+
+export type userIdListenerPayload = {
+  type: 'booking' | 'tracking';
+  payload: any;
 };
