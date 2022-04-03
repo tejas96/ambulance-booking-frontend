@@ -23,23 +23,25 @@ const SplashScreen: React.FC = () => {
   const {currentPosition} = useGeoLocation();
 
   useEffect(() => {
-    if (user && !currentPosition.loading && currentPosition.position) {
-      setLoggedInUser(user);
-      getAddress(
-        currentPosition.position.coords.latitude,
-        currentPosition.position.coords.longitude,
-      ).then(res => {
-        setCurrentCity(res?.city || '');
-        if (user.useRole === UserRole.PASSENGER) {
-          navigation.replace(Routes.PASSENGER_STACK);
-          // navigation.replace(Routes.TRACKING);
-        } else {
-          navigation.replace(Routes.DRIVER_STACK);
-        }
-      });
-    } else if (!loading) {
-      navigation.replace(Routes.REGISTER_STACK);
+    if (!currentPosition.loading && currentPosition.position) {
+      if (user) {
+        setLoggedInUser(user);
+        getAddress(
+          currentPosition.position.coords.latitude,
+          currentPosition.position.coords.longitude,
+        ).then(res => {
+          setCurrentCity(res?.city || '');
+          if (user.useRole === UserRole.PASSENGER) {
+            navigation.replace(Routes.PASSENGER_STACK);
+          } else {
+            navigation.replace(Routes.DRIVER_STACK);
+          }
+        });
+      } else if (!loading) {
+        navigation.replace(Routes.REGISTER_STACK);
+      }
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, user, currentPosition.loading]);
 
